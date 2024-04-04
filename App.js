@@ -4,7 +4,8 @@ import React from 'react'
 export default function App() {
   return (
     <SafeAreaView>
-      <Text>App</Text>
+      <Text>2. Setup Tailwind CSS burada kaldımmm.... </Text>
     </SafeAreaView>
   )
 }
+
