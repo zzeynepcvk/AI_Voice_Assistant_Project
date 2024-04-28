@@ -6,6 +6,8 @@ module.exports = {
       colors:{
         custompink: '#ebc5dc',
         custombutton : '#5a84a8',
+        customchatbg : '#e9e9e9',
+        customgpt : '#aac8c0',
       }
     },
   },
