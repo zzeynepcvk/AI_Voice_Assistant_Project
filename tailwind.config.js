@@ -8,6 +8,10 @@ module.exports = {
         custombutton : '#5a84a8',
         customchatbg : '#e9e9e9',
         customgpt : '#aac8c0',
+        customdall : '#dd91be' ,
+        customsmart : '#5a84a8' ,
+        customuserbg: '#fff7f7',
+        custombotbg:'#aac8c0',
       }
     },
   },
