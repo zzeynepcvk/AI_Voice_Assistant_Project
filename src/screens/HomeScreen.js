@@ -7,6 +7,16 @@ import { dummyMessages } from '../constants';
 
 export default function HomeScreen() {
   const [messages, setMessages] = useState(dummyMessages);
+  const [recording, setRecording] = useState(false);
+  const [speaking, setSpeaking] = useState(true);
+
+  const clear =()=>{
+    setMessages([]);
+  }
+
+  const stopSpeaking = ()=>{
+    setSpeaking(false);
+  }
   return (
     <View className="flex-1 bg-custompink">
       <SafeAreaView className="flex-1 flex mx-5">
@@ -44,11 +54,11 @@ export default function HomeScreen() {
                               key={index} className="flex-row justify-start">
                               <View className="p-2 rounded-2xl bg-customgpt rounded-tl-none">
                                 <Image
-                                  source={{uri: message.content}}
+                                  source={{ uri: message.content }}
                                   className="rounded-2xl"
                                   resizeMode='contain'
                                   style={{ height: wp(60), width: wp(60) }}>
-                                  </Image>
+                                </Image>
                               </View>
                             </View>
                           )
@@ -99,14 +109,47 @@ export default function HomeScreen() {
         {/* kayıt temizleme ve durdurma butonu  */}
 
         <View className="flex justify-center items-center">
-          <TouchableOpacity>
-            <Image className="rounded-full"
-            source={require('../../assets/images/micro.png')}
-            style={{width: hp(10), height: hp(10)}}>
+          {
+            recording ? (
 
-            </Image>
-          </TouchableOpacity>
+              <TouchableOpacity>
+                <Image className="rounded-full bottom-6"
+                  source={require('../../assets/images/animationMic.gif')}
+                  style={{ width: hp(12), height: hp(12) }}>
 
+                </Image>
+              </TouchableOpacity>
+
+            ) : (
+              <TouchableOpacity>
+                <Image className="rounded-full bottom-6"
+                  source={require('../../assets/images/micro.png')}
+                  style={{ width: hp(8), height: hp(8) }}>
+
+                </Image>
+              </TouchableOpacity>
+
+            )
+          }
+
+          {
+            messages.length>0 && (
+              <TouchableOpacity
+              onPress={clear}
+              className="bg-neutral-400 rounded-3xl p-2 absolute right-6 bottom-9">
+                <Text className="text-white font-semibold"> Temizle </Text>
+              </TouchableOpacity>
+            )
+          }
+          {
+            speaking && (
+              <TouchableOpacity
+              onPress={stopSpeaking}
+              className="bg-red-400 rounded-3xl p-2 absolute left-6 bottom-9">
+                <Text className="text-white font-semibold"> Dur </Text>
+              </TouchableOpacity>
+            )
+          }
         </View>
       </SafeAreaView>
     </View>
