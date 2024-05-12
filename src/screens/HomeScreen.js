@@ -1,8 +1,9 @@
 import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Features from '../components/features';
 import { dummyMessages } from '../constants';
+import Voice from '@react-native-voice/voice';
 
 
 export default function HomeScreen() {
@@ -10,13 +11,59 @@ export default function HomeScreen() {
   const [recording, setRecording] = useState(false);
   const [speaking, setSpeaking] = useState(true);
 
-  const clear =()=>{
+  const speechStartHandler = e=>{
+    console.log('speech start handler')
+  }
+  const speechEndHandler = e=>{
+    setRecording(false);
+    console.log('speech end handler')
+  }
+  const speechResultsHandler = e=>{
+    console.log('voice event : ' , e)
+  }
+  const speechErrorHandler = e=>{
+    console.log('speech error handler' , e)
+  }
+
+  const startRecording = async ()=>{
+    setRecording(true);
+    try{
+      await Voice.start('tr-TR'); // türkçe dili için 
+    }catch(error){
+      console.log('error : ' , error);
+    }
+  }
+  const stopRecording = async ()=>{
+    try{
+      await Voice.stop();
+      setRecording(false);
+      // fetch response  40.59 
+    }catch(error){
+      console.log('error : ' , error);
+    }
+  }
+
+  const clear = () => {
     setMessages([]);
   }
 
-  const stopSpeaking = ()=>{
+  const stopSpeaking = () => {
     setSpeaking(false);
   }
+
+  useEffect(() => {
+    // ses işleyici events 
+    Voice.onSpeechStart = speechStartHandler;
+    Voice.onSpeechEnd = speechEndHandler;
+    Voice.onSpeechResults = speechResultsHandler;
+    Voice.onSpeechError = speechErrorHandler;
+
+    return()=>{
+      // ses örneğini sonlandırma 
+      Voice.destroy().then(Voice.removeAllListeners);
+    }
+
+  }, [])
   return (
     <View className="flex-1 bg-custompink">
       <SafeAreaView className="flex-1 flex mx-5">
@@ -106,7 +153,7 @@ export default function HomeScreen() {
           )
         }
 
-        {/* kayıt temizleme ve durdurma butonu  */}
+        {/* kayıt , temizleme ve durdurma butonu  */}
 
         <View className="flex justify-center items-center">
           {
@@ -133,10 +180,10 @@ export default function HomeScreen() {
           }
 
           {
-            messages.length>0 && (
+            messages.length > 0 && (
               <TouchableOpacity
-              onPress={clear}
-              className="bg-neutral-400 rounded-3xl p-2 absolute right-6 bottom-9">
+                onPress={clear}
+                className="bg-neutral-400 rounded-3xl p-2 absolute right-6 bottom-9">
                 <Text className="text-white font-semibold"> Temizle </Text>
               </TouchableOpacity>
             )
@@ -144,8 +191,8 @@ export default function HomeScreen() {
           {
             speaking && (
               <TouchableOpacity
-              onPress={stopSpeaking}
-              className="bg-red-400 rounded-3xl p-2 absolute left-6 bottom-9">
+                onPress={stopSpeaking}
+                className="bg-red-400 rounded-3xl p-2 absolute left-6 bottom-9">
                 <Text className="text-white font-semibold"> Dur </Text>
               </TouchableOpacity>
             )

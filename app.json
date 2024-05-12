@@ -3,6 +3,7 @@
     "name": "AI_Voice_Assistant_Project",
     "slug": "AI_Voice_Assistant_Project",
     "version": "1.0.0",
+    "plugins": ["@react-native-voice/voice"],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
