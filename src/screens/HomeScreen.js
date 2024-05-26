@@ -10,36 +10,39 @@ export default function HomeScreen() {
   const [messages, setMessages] = useState(dummyMessages);
   const [recording, setRecording] = useState(false);
   const [speaking, setSpeaking] = useState(true);
+  const [result, setResult] = useState('');
 
-  const speechStartHandler = e=>{
-    console.log('speech start handler')
+  const speechStartHandler = e => {
+    console.log('speech start handler');
   }
-  const speechEndHandler = e=>{
+  const speechEndHandler = e => {
     setRecording(false);
-    console.log('speech end handler')
+    console.log('speech end handler');
   }
-  const speechResultsHandler = e=>{
-    console.log('voice event : ' , e)
+  const speechResultsHandler = e => {
+    console.log('voice event : ', e);
+    const text = e.value[0];
+    setResult(text);
   }
-  const speechErrorHandler = e=>{
-    console.log('speech error handler' , e)
+  const speechErrorHandler = e => {
+    console.log('speech error handler', e);
   }
 
-  const startRecording = async ()=>{
+  const startRecording = async () => {
     setRecording(true);
-    try{
-      await Voice.start('tr-TR'); // türkçe dili için 
-    }catch(error){
-      console.log('error : ' , error);
+    try {
+      await Voice.start('en-GB'); // türkçe dili için 
+    } catch (error) {
+      console.log('error var : ', error);
     }
   }
-  const stopRecording = async ()=>{
-    try{
+  const stopRecording = async () => {
+    try {
       await Voice.stop();
       setRecording(false);
       // fetch response  40.59 
-    }catch(error){
-      console.log('error : ' , error);
+    } catch (error) {
+      console.log('error : ', error);
     }
   }
 
@@ -58,12 +61,15 @@ export default function HomeScreen() {
     Voice.onSpeechResults = speechResultsHandler;
     Voice.onSpeechError = speechErrorHandler;
 
-    return()=>{
+    return () => {
       // ses örneğini sonlandırma 
       Voice.destroy().then(Voice.removeAllListeners);
     }
 
   }, [])
+
+  /* console.log('result : ' , result); */
+  
   return (
     <View className="flex-1 bg-custompink">
       <SafeAreaView className="flex-1 flex mx-5">
@@ -159,16 +165,18 @@ export default function HomeScreen() {
           {
             recording ? (
 
-              <TouchableOpacity>
-                <Image className="rounded-full bottom-6"
+              <TouchableOpacity onPress={stopRecording}>
+                {/* recording stop button */}
+                <Image
+                  className="rounded-full bottom-6"
                   source={require('../../assets/images/animationMic.gif')}
                   style={{ width: hp(12), height: hp(12) }}>
-
                 </Image>
               </TouchableOpacity>
 
             ) : (
-              <TouchableOpacity>
+              <TouchableOpacity onPress={startRecording}>
+                {/* recording start button */}
                 <Image className="rounded-full bottom-6"
                   source={require('../../assets/images/micro.png')}
                   style={{ width: hp(8), height: hp(8) }}>

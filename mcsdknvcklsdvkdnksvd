@@ -1,0 +1,26 @@
+[33m85c763e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;32mtry[m[33m)[m HEAD@{0}: checkout: moving from try to main
+[33m85c763e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;32mtry[m[33m)[m HEAD@{1}: checkout: moving from try to try
+[33m85c763e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;32mtry[m[33m)[m HEAD@{2}: checkout: moving from main to try
+[33m85c763e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;32mtry[m[33m)[m HEAD@{3}: commit (amend): api key bulundurdugu icin dolu commit atamıyorum. text to speech sorunları ve api key işlemlerininin bir kısmını yaptım .
+[33m6d558c4[m HEAD@{4}: commit (amend): api key bulundurdugu icin dolu commit atamıyorum. text to speech sorunları ve api key işlemlerininin bir kısmını yaptım .
+[33m9321fe2[m HEAD@{5}: commit: api key bulundurdugu icin dolu commit atamıyorum. text to speech sorunları ve api key işlemlerininin bir kısmını yaptım .
+[33me079eea[m HEAD@{6}: commit: text
+[33m3e4115c[m HEAD@{7}: commit: speech to text sorunları , api işlemleri ve sorunları
+[33mdf730a2[m HEAD@{8}: commit (amend): speech to text , api işlemleri
+[33ma172ca2[m HEAD@{9}: commit: speech to text , api işlemleri
+[33mc11b486[m HEAD@{10}: commit: speech to text sorunları api işlemleri
+[33mfbbdd31[m HEAD@{11}: commit: speech to text sorunları (devam ediyor) , openAI API işlemleri ve sorunları ( devam ediyor )
+[33m46d1d2e[m HEAD@{12}: commit: speech to text sorunları (devam ediyor) , OpenAI API işlemleri --
+[33m0238fb8[m HEAD@{13}: commit: speech to text sorunları (devam ediyor) , openAI API işlemleri --
+[33m092839f[m HEAD@{14}: commit: speech to text sorunları (devam ediyor ) , Open AI API işlemleri --
+[33me01248d[m HEAD@{15}: commit: speech to text sorunları , openAI API işlemleri ve testi
+[33ma459ea4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{16}: commit: text to speech eklentisi eklendi
+[33m2617a9c[m HEAD@{17}: commit: home screen tamamlandı.
+[33m0f0c539[m HEAD@{18}: commit: home screen hataları giderildi
+[33mbfc39d1[m HEAD@{19}: commit: home screen eklendi , features componenti eklendi,
+[33m33ce2ba[m HEAD@{20}: commit: welcome screen sorunları giderildi.
+[33m64aa455[m HEAD@{21}: commit: react navigation eklendi
+[33m4329286[m HEAD@{22}: commit: native wind kurulumu tamamlandı
+[33m3e988a7[m HEAD@{23}: commit: dosya düzeni , NativeWind kurulumu
+[33ma74c3f5[m HEAD@{24}: commit: trial committtt
+[33mee036ee[m HEAD@{25}: clone: from https://github.com/zzeynepcvk/AI_Voice_Assistant_Project.git
